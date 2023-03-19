@@ -1,5 +1,7 @@
 import Loading from "@/components/Loading";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import myImageLoader from "@/my/image/loader";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -98,9 +100,15 @@ const Home = () => {
                                             <div className="card border-0 shadow text-center">
                                                 <div className="card-body">
                                                     <div className="card-avatar">
-                                                        <img
-                                                            src={`${project.image}`}
-                                                            alt=""
+                                                        <Image
+                                                            src={project.image}
+                                                            width="250"
+                                                            height="250"
+                                                            alt={project.name}
+                                                            loader={
+                                                                myImageLoader
+                                                            }
+                                                            priority
                                                         />
                                                     </div>
                                                     <h5 className="card-title text-dark">
